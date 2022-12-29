@@ -6,6 +6,20 @@ import threading
 
 print("  Suicide-DDoS  \n  by: t4ucci\n")
 
+print("┏┓┃┃┏┫┣┓┃┃┃┃┗┓┏┘\n")
+
+print("Iniciando programa..")
+
+time.sleep(1)
+print("\n1..")
+time.sleep(1)
+print("2..")
+time.sleep(1)
+print("3..\n")
+time.sleep(1)
+
+print("\n   Divirta-se!\n")
+
 ip = str(input("[♤] Endereço: "))
 port = int(input("[♤] Porta: "))
 packs = int(input("[♤] Quant. Pacotes: "))
